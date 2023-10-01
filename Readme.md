@@ -11,7 +11,6 @@
     - [Listas](#listas)
     - [Mapas](#mapas)
     - [Arrays](#arrays)
-    - [Objetos](#objetos)
   - [Operadores](#operadores)
     - [Operadores aritmeticos](#operadores-aritmeticos)
     - [Operadores de comparación](#operadores-de-comparación)
@@ -21,8 +20,8 @@
     - [Operadores de identidad](#operadores-de-identidad)
     - [Operadores de membresía](#operadores-de-membresía)
     - [Operadores de miembro](#operadores-de-miembro)
-    - [Operador: $](#operador-)
-    - [Operador ternario condicional: ?:](#operador-ternario-condicional-)
+    - [Operador: '$'](#operador-)
+    - [Operador ternario condicional: '?:'](#operador-ternario-condicional-)
     - [Operadores de navegación segura: ?., ?\[\] y ?\*](#operadores-de-navegación-segura---y-)
   - [Conversiones](#conversiones)
     - [String a otros tipos de datos](#string-a-otros-tipos-de-datos)
@@ -46,12 +45,6 @@
     - [Metodos de extension](#metodos-de-extension)
       - [delegate](#delegate)
     - [Return implicito](#return-implicito)
-  - [Clases y objetos](#clases-y-objetos)
-    - [Clases](#clases)
-    - [Objetos](#objetos-1)
-    - [Constructores](#constructores)
-    - [Constructor de copia](#constructor-de-copia)
-    - [Metodos](#metodos)
   - [Colecciones](#colecciones)
     - [Map](#map)
       - [Crear un mapa vacio](#crear-un-mapa-vacio)
@@ -66,6 +59,24 @@
       - [Iterar sobre un set](#iterar-sobre-un-set)
       - [Eliminar un elemento del set](#eliminar-un-elemento-del-set)
       - [contains()](#contains)
+  - [Clases y objetos](#clases-y-objetos)
+    - [Clases](#clases)
+    - [Objetos](#objetos)
+    - [Constructores](#constructores)
+    - [Constructor de copia](#constructor-de-copia)
+    - [Metodos](#metodos)
+  - [Programacion orientada a objetos (POO)](#programacion-orientada-a-objetos-poo)
+    - [Herencia](#herencia)
+    - [Encapsulamiento](#encapsulamiento)
+      - [Private](#private)
+      - [Public](#public)
+      - [Protected](#protected)
+      - [Ejemplo practico de private, public y protected](#ejemplo-practico-de-private-public-y-protected)
+    - [Setter y getter](#setter-y-getter)
+    - [Interfaces y clases abstractas](#interfaces-y-clases-abstractas)
+      - [Interfaces](#interfaces)
+      - [Clases abstractas](#clases-abstractas)
+    - [Clases internas y anidadas](#clases-internas-y-anidadas)
 
 ## Variables y tipos de datos
 
@@ -113,23 +124,6 @@ Los mapas (Map) son colecciones de clave-valor (key-value) el equivalente a dicc
 Los array son una colección ordenada de elementos de un solo tipo y se pueden crear usando la sintaxis "[tipo]".
 
     int[] myArray = [1,2,3]
-
-### Objetos
-
-Los objetos (Object) son instancias de clases que tienen propiedades y metodos.
-
-    class Person {
-        String name
-        int age
-
-        void speak(){
-            println("Hola, mi nombre es ${name}")
-        }
-    }
-
-    def person = new Person(name:"John", age:30)
-
-    person.speak()
 
 ## Operadores
 
@@ -208,14 +202,14 @@ Los objetos (Object) son instancias de clases que tienen propiedades y metodos.
 | () | Llamada a método |
 | ?: | Operador ternario |
 
-### Operador: $ 
+### Operador: '$'
 
 Se usa para incluir el valor de una variable en un String
 
     String nombre = "John"
     println("Hola, mi nombre es ${nombre}")
 
-### Operador ternario condicional: ?:
+### Operador ternario condicional: '?:'
 
 `condicion ? resultado_si_verdadero : resultado_si_falso`
 
@@ -416,94 +410,6 @@ En groovy cuando una funcion o metodo no tiene un return explicito, se retorna e
         a + b
     }
 
-## Clases y objetos
-
-### Clases
-
-Para definir clases se utiliza `class` y el nombre de la clase.
-
-    class Persona {
-        String nombre
-        int edad
-    }
-
-### Objetos
-
-Para crear objetos se utiliza `new` y el nombre de la clase.
-
-    class Persona {
-        String nombre
-        int edad
-    }
-
-    def persona = new Persona()
-    persona.nombre = "John"
-    persona.edad = 30
-
-    println persona.nombre
-    println persona.edad
-
-### Constructores
-
-Los constructores se definen con `def __init__` y se ejecutan al crear un objeto.
-
-    class Persona {
-        String nombre
-        int edad
-
-        def __init__(String nombre, int edad){
-            this.nombre = nombre
-            this.edad = edad
-        }
-    }
-
-    def persona = new Persona("John", 30)
-
-    println persona.nombre
-    println persona.edad
-
-### Constructor de copia
-
-Se puede crear un constructor de copia para crear un nuevo objeto con los mismos valores de otro objeto.
-
-    class Persona {
-        String nombre
-        int edad
-
-        Persona(String nombre, int edad){
-            this.nombre = nombre
-            this.edad = edad
-        }
-
-        Persona(Persona persona){
-            this(persona.nombre, persona.edad)
-        }
-    }
-    
-    def persona = new Persona("John", 30)
-    def persona2 = new Persona(persona)
-
-### Metodos
-
-Los metodos se definen con `def` y el nombre del metodo.
-
-    class Persona {
-        String nombre
-        int edad
-
-        Persona(String nombre, int edad){
-            this.nombre = nombre
-            this.edad = edad
-        }
-
-        void saludar(){
-            println "Hola, mi nombre es ${nombre}"
-        }
-    }
-
-    def persona = new Persona("John", 30)
-    persona.saludar()
-
 ## Colecciones
 
 ### Map
@@ -600,3 +506,417 @@ Permite verificar si un elemento esta en el set.
     set.add("elemento")
     set << "elemento"
     println set.contains("elemento") // Salida: true
+
+## Clases y objetos
+
+### Clases
+
+Para definir clases se utiliza `class` y el nombre de la clase.
+
+    class Persona {
+        String nombre
+        int edad
+    }
+
+### Objetos
+
+Para crear objetos se utiliza `new` y el nombre de la clase.
+
+    class Persona {
+        String nombre
+        int edad
+    }
+
+    def persona = new Persona()
+    persona.nombre = "John"
+    persona.edad = 30
+
+    println persona.nombre
+    println persona.edad
+
+### Constructores
+
+Los constructores se definen con `def __init__` y se ejecutan al crear un objeto.
+
+    class Persona {
+        String nombre
+        int edad
+
+        def __init__(String nombre, int edad){
+            this.nombre = nombre
+            this.edad = edad
+        }
+    }
+
+    def persona = new Persona("John", 30)
+
+    println persona.nombre
+    println persona.edad
+
+### Constructor de copia
+
+Se puede crear un constructor de copia para crear un nuevo objeto con los mismos valores de otro objeto.
+
+    class Persona {
+        String nombre
+        int edad
+
+        Persona(String nombre, int edad){
+            this.nombre = nombre
+            this.edad = edad
+        }
+
+        Persona(Persona persona){
+            this(persona.nombre, persona.edad)
+        }
+    }
+    
+    def persona = new Persona("John", 30)
+    def persona2 = new Persona(persona)
+
+### Metodos
+
+Los metodos se definen con `def` y el nombre del metodo.
+
+    class Persona {
+        String nombre
+        int edad
+
+        Persona(String nombre, int edad){
+            this.nombre = nombre
+            this.edad = edad
+        }
+
+        void saludar(){
+            println "Hola, mi nombre es ${nombre}"
+        }
+    }
+
+    def persona = new Persona("John", 30)
+    persona.saludar()
+
+## Programacion orientada a objetos (POO)
+
+### Herencia
+
+La herencia se define con `extends` y el nombre de la clase padre.
+
+    class Persona {
+        String nombre
+        int edad
+
+        Persona(String nombre, int edad){
+            this.nombre = nombre
+            this.edad = edad
+        }
+
+        void saludar(){
+            println "Hola, mi nombre es ${nombre}"
+        }
+    }
+
+    class Empleado extends Persona {
+        String cargo
+        int salario
+
+        Empleado(String nombre, int edad, String cargo, int salario){
+            super(nombre, edad)
+            this.cargo = cargo
+            this.salario = salario
+        }
+
+        void trabajar(){
+            println "Estoy trabajando"
+        }
+    }
+
+    def empleado = new Empleado("John", 30, "Programador", 1000)
+    empleado.saludar()
+    empleado.trabajar()
+
+### Encapsulamiento
+
+#### Private
+
+El encapsulamiento se define con `private` y solo permite acceder a los atributos y metodos desde la misma clase.
+
+    class Persona {
+        private String nombre
+        private int edad
+
+        Persona(String nombre, int edad){
+            this.nombre = nombre
+            this.edad = edad
+        }
+
+        void saludar(){
+            println "Hola, mi nombre es ${nombre}"
+        }
+    }
+
+    def persona = new Persona("John", 30)
+    persona.saludar()
+    println persona.nombre // Error: No se puede acceder al atributo nombre desde fuera de la clase
+
+#### Public
+
+El encapsulamiento se define con `public` y permite acceder a los atributos y metodos desde cualquier clase.
+
+    class Persona {
+        public String nombre
+        public int edad
+
+        Persona(String nombre, int edad){
+            this.nombre = nombre
+            this.edad = edad
+        }
+
+        void saludar(){
+            println "Hola, mi nombre es ${nombre}"
+        }
+    }
+
+    def persona = new Persona("John", 30)
+    persona.saludar()
+    println persona.nombre // Salida: "John"
+
+#### Protected
+
+El encapsulamiento se define con `protected` y permite acceder a los atributos y metodos desde la misma clase y desde las clases hijas.
+
+    class Persona {
+        protected String nombre
+        protected int edad
+
+        Persona(String nombre, int edad){
+            this.nombre = nombre
+            this.edad = edad
+        }
+
+        void saludar(){
+            println "Hola, mi nombre es ${nombre}"
+        }
+    }
+
+    class Empleado extends Persona {
+        String cargo
+        int salario
+
+        Empleado(String nombre, int edad, String cargo, int salario){
+            super(nombre, edad)
+            this.cargo = cargo
+            this.salario = salario
+        }
+
+        void trabajar(){
+            println "Estoy trabajando"
+        }
+    }
+
+    def empleado = new Empleado("John", 30, "Programador", 1000)
+    empleado.saludar()
+    empleado.trabajar()
+    println empleado.nombre // Salida: "John"
+
+#### Ejemplo practico de private, public y protected
+
+    class Persona {
+        private String nombre
+        public int edad
+        protected String apellido
+
+        Persona(String nombre, int edad, String apellido){
+            this.nombre = nombre
+            this.edad = edad
+            this.apellido = apellido
+        }
+
+        void saludar(){
+            println "Hola, mi nombre es ${nombre} ${apellido}"
+        }
+    }
+
+    class Empleado extends Persona {
+        String cargo
+        int salario
+
+        Empleado(String nombre, int edad, String apellido, String cargo, int salario){
+            super(nombre, edad, apellido)
+            this.cargo = cargo
+            this.salario = salario
+        }
+
+        void trabajar(){
+            println "Estoy trabajando"
+        }
+    }
+
+    def empleado = new Empleado("John", 30, "Doe", "Programador", 1000)
+    empleado.saludar()
+    empleado.trabajar()
+    println empleado.nombre // Error: No se puede acceder al atributo nombre desde fuera de la clase
+    println empleado.apellido // Salida: "Doe"
+    println empleado.edad // Salida: 30
+
+### Setter y getter
+
+Los setter y getter se definen con `set` y `get` y permiten modificar y obtener los valores de los atributos de una clase.
+
+    class Persona {
+        private String nombre
+        private int edad
+
+        Persona(String nombre, int edad){
+            this.nombre = nombre
+            this.edad = edad
+        }
+
+        void saludar(){
+            println "Hola, mi nombre es ${nombre}"
+        }
+
+        void setNombre(String nombre){
+            this.nombre = nombre
+        }
+
+        String getNombre(){
+            return nombre
+        }
+
+        void setEdad(int edad){
+            this.edad = edad
+        }
+
+        int getEdad(){
+            return edad
+        }
+    }
+
+    def persona = new Persona("John", 30)
+    persona.saludar()
+    println persona.getNombre()
+    println persona.getEdad()
+    persona.setNombre("Jane")
+    persona.setEdad(25)
+    println persona.getNombre()
+    println persona.getEdad()
+
+### Interfaces y clases abstractas
+
+#### Interfaces
+
+Las interfaces se definen con `interface` y permiten definir metodos que deben ser implementados por las clases que la implementen. Se utiliza `implements` para implementar una interfaz.
+
+_`interface`_ -> se utiliza para definir una interfaz.
+
+- _Concideraciones:_
+  - Se suelen usar cuando se quiere definir un conjunto de metodos que deben ser implementados por las clases que la implementen.
+  - Una clase puede implementar multiples interfaces.
+
+**Ejemplo de interfaz:**  
+
+    interface Persona {
+        void saludar()
+    }
+
+    class Empleado implements Persona {
+        String nombre
+        int edad
+
+        Empleado(String nombre, int edad){
+            this.nombre = nombre
+            this.edad = edad
+        }
+
+        void saludar(){
+            println "Hola, mi nombre es ${nombre}"
+        }
+    }
+
+    def empleado = new Empleado("John", 30)
+    empleado.saludar()
+
+#### Clases abstractas
+
+Las clases abstractas se definen con `abstract class` y permiten definir metodos que deben ser implementados por las clases que la hereden. Se utiliza `extends` para heredar una clase abstracta.
+
+_`abstract`_ -> se utiliza para definir una clase abstracta o un metodo abstracto.
+
+- _Concideraciones:_
+  - Una clase abstracta no se puede instanciar.
+  - Un metodo abstracto no tiene implementacion.
+  - Una clase puede implementar multiples interfaces pero solo puede heredar una clase abstracta.
+  - Una clase abstracta puede heredar de otra clase abstracta.
+
+**Ejemplo de clase abstracta:**
+
+    abstract class Persona {
+        String nombre
+        int edad
+
+        Persona(String nombre, int edad){
+            this.nombre = nombre
+            this.edad = edad
+        }
+
+        abstract void saludar()
+    }
+
+    class Empleado extends Persona {
+        String cargo
+        int salario
+
+        Empleado(String nombre, int edad, String cargo, int salario){
+            super(nombre, edad)
+            this.cargo = cargo
+            this.salario = salario
+        }
+
+        void saludar(){
+            println "Hola, mi nombre es ${nombre}"
+        }
+
+        void trabajar(){
+            println "Estoy trabajando"
+        }
+    }
+
+    def empleado = new Empleado("John", 30, "Programador", 1000)
+    empleado.saludar()
+    empleado.trabajar()
+
+### Clases internas y anidadas
+
+Las clases internas y anidadas se definen con `class` y permiten definir clases dentro de otras clases. La diferencia entre una clase interna y una clase anidada es que la clase interna no puede ser estatica y la clase anidada si puede ser estatica. Esto significa que una clase interna puede acceder a los atributos y metodos de la clase externa y una clase anidada no puede acceder a los atributos y metodos de la clase externa.
+
+**Ejemplo de clase interna:**
+
+    class External {
+        private String message = "Hola desde la clase externa"
+
+        class Internal {
+            void printMessage(){
+                println message
+            }
+        }
+    }
+
+    def external = new External()
+    def internal = external.Internal()
+    internal.printMessage() // Salida: "Hola desde la clase externa"
+
+**Ejemplo de clase anidada:**  
+
+    class External {
+        private String message = "Hola desde la clase externa"
+
+        static class Anidada {
+            void printMessage(){
+                println "Hola desde la clase anidada"
+            }
+        }
+    }
+
+    def anidada = new External.Anidada()
+    anidada.printMessage() // Salida: "Hola desde la clase anidada"
+

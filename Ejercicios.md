@@ -36,3 +36,22 @@ Escribe un programa en Groovy que realice distintas operaciones sobre una lista 
   - Listar los paises guardados en orden alfabetico
   - Buscar la capital de un pais
   - Finalizar la ejecucion del programa
+
+## Ejercicio 4
+
+Crear una clase para resolver un dominio de Empleados
+
+Queremos crear una aplicación para administrar la información de los empleados de una empresa. Para ello, podemos crear una clase base llamada "Empleado", que tenga los atributos comunes a todos los empleados (por ejemplo, nombre, apellido, salario, etc.), y luego crear subclases para los distintos tipos de empleados (por ejemplo, "EmpleadoTemporal", "EmpleadoPermanente", etc.) que hereden de la clase base y añadan atributos y métodos específicos de cada tipo de empleado.
+
+- Crear una clase Empleado con los siguientes atributos:
+  - nombre
+  - apellido
+  - salario
+  - fecha de nacimiento
+  - fecha de contratacion
+
+- Crear una clase EmpleadoTemporal que herede de Empleado y que tenga los siguientes atributos:
+  - fecha de finalizacion de contrato
+
+- Crear una clase EmpleadoPermanente que herede de Empleado y que tenga los siguientes atributos:
+  - fecha de finalizacion de periodo de prueba
