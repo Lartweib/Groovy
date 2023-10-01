@@ -919,4 +919,3 @@ Las clases internas y anidadas se definen con `class` y permiten definir clases 
 
     def anidada = new External.Anidada()
     anidada.printMessage() // Salida: "Hola desde la clase anidada"
-
