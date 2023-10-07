@@ -1,36 +1,43 @@
-class Promedio{
+import java.util.Scanner
 
-    List listaNumerosEnteros = []
+class Promedio {
 
-    def pedirNumeros(){
-        do{
-            def entradaUsuario = System.console().readLine("\nIngresa una lista de numeros enteros separados por comas: ")
+    List<Integer> listaNumerosEnteros = []
+
+    def pedirNumeros() {
+        Scanner scanner = new Scanner(System.in)
+
+        def entradaUsuario = ""
+        while (true) {
+            println "\nIngresa una lista de numeros enteros separados por comas: "
+            entradaUsuario = scanner.nextLine()
             if (entradaUsuario.trim() == '') {
                 println "\nDebes ingresar almenos dos numeros enteros"
                 continue
             }
-            try{
+            try {
                 def listaNumeros = entradaUsuario.split(",")
-                if (listaNumeros.size() == 0){
+                if (listaNumeros.size() == 0) {
                     println "\nDebes ingresar al menos un numero"
                     continue
                 }
                 listaNumerosEnteros = listaNumeros.collect { it.toInteger() }
                 break
-            }catch(Exception e){
+            } catch (Exception e) {
                 println "\nSolo ingresa numeros enteros separados por coma"
             }
-        }while (true)
+        }
 
+        scanner.close()
         return listaNumerosEnteros
     }
 
-    def calcularPromedio(lista){
+    def calcularPromedio(lista) {
         float total = lista.sum()
         return total / lista.size()
     }
 
-    void imprimirResultado(promedio){
+    void imprimirResultado(promedio) {
         println "\n-> El promedio de los numeros facilitados es: ${promedio}"
     }
 
@@ -39,4 +46,3 @@ class Promedio{
         promedio.imprimirResultado(promedio.calcularPromedio(promedio.pedirNumeros()))
     }
 }
-
